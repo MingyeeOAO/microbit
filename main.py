@@ -1,5 +1,7 @@
-from lib.Vector import *
-v = Vector2(1,2)
+def on_forever():
+    pass
+basic.forever(on_forever)
 
-basic.show_string(2)
-basic.show_string(len(v))
+class Object:
+    def __init__():
+        
