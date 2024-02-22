@@ -1,7 +1,5 @@
-def on_forever():
-    pass
-basic.forever(on_forever)
+# v = Vector2(1, 2)
 
-class Object:
-    def __init__():
-        
+def on_forever():
+    basic.show_number()
+basic.forever(on_forever)
