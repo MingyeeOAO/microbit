@@ -7,16 +7,11 @@
         "microphone": "*"
     },
     "files": [
-        "main.blocks",
         "README.md",
         "main.py",
-        "lib/Vector.py",
-        "main.ts",
-        "lib/Vector.ts"
+        "lib/Vector.py"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": [],
     "targetVersions": {
         "target": "6.0.25",
         "targetId": "microbit"
@@ -24,7 +19,7 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj",
+    "preferredEditor": "pyprj",
     "yotta": {
         "config": {
             "microbit-dal": {

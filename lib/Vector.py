@@ -8,3 +8,6 @@ class Vector2:
 
     def __len__(self):
         return sqrt(self.x**2+self.y**2)
+
+    def __abs__(self):
+        return len(self)
