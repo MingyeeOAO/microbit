@@ -9,7 +9,10 @@
     "files": [
         "main.blocks",
         "README.md",
-        "main.py"
+        "main.py",
+        "lib/Vector.py",
+        "main.ts",
+        "lib/Vector.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -21,5 +24,16 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "pyprj"
+    "preferredEditor": "tsprj",
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "open": 0,
+                    "whitelist": 1,
+                    "security_level": "SECURITY_MODE_ENCRYPTION_NO_MITM"
+                }
+            }
+        }
+    }
 }
