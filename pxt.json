@@ -10,8 +10,9 @@
         "main.blocks",
         "README.md",
         "main.py",
+        "lib/Vector.py",
         "main.ts",
-        "lib/Vector.py"
+        "lib/Vector.ts"
     ],
     "testFiles": [
         "test.ts"

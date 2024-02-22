@@ -1,7 +1,5 @@
-from lib.Vector import Vector2
-
-v = Vector2(3, 4)
+# v = Vector2(1, 2)
 
 def on_forever():
-    basic.show_number(len(v))
+    basic.show_number(20)
 basic.forever(on_forever)
