@@ -9,7 +9,6 @@
     "files": [
         "main.blocks",
         "README.md",
-        "main.py",
         "lib/Vector.ts",
         "main.ts"
     ],
@@ -23,5 +22,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "pyprj"
+    "preferredEditor": "tsprj"
 }
