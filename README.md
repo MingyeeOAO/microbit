@@ -1,5 +1,5 @@
 
-> 在 [https://mingyeeoao.github.io/microbit/](https://mingyeeoao.github.io/microbit/) 打開此頁面
+
 
 ## 作為擴充功能使用
 
@@ -22,3 +22,7 @@
 
 * for PXT/microbit
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+## Note
+* P1 is connected to shaker
+* P2 is connected to led(neopixel)
