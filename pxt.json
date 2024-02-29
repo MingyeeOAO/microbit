@@ -13,7 +13,8 @@
         "main.ts",
         "lib/Vector.ts",
         "lib/core.ts",
-        "lib/Color.ts"
+        "lib/Color.ts",
+        "lib/Music.ts"
     ],
     "testFiles": [
         "test.ts"
