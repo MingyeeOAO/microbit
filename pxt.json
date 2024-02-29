@@ -1,16 +1,19 @@
 {
-    "name": "a..engine?",
+    "name": "a..engine? - 複製 - 複製",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.7.5"
     },
     "files": [
         "main.blocks",
         "README.md",
+        "main.ts",
         "lib/Vector.ts",
-        "main.ts"
+        "lib/core.ts",
+        "lib/Color.ts"
     ],
     "testFiles": [
         "test.ts"
