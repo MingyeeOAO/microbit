@@ -12,4 +12,9 @@ class Vector2 {
         return Math.sqrt(this.x ** 2 + this.y ** 2)
     }
     
+    add(other : Vector2) {
+        this.x += other.x
+        this.y += other.y
+        return this
+    }
 }
