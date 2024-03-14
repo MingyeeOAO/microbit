@@ -33,6 +33,8 @@ basic.forever(() =>{
     //music.setTempo(90)
     let notes= [Note.D, Note.E, Note.G, Note.E, Note.B, 0, -1, Note.B, 0, -1, Note.A, 0, 0, -1, -1*BeatFraction.Whole*4,
     Note.D, Note.E, Note.G, Note.E, Note.A, 0, -1, Note.A, 0, -1, Note.G, 0, Note.F, Note.E, 0,
+    Note.D, Note.E, Note.G, Note.E, Note.G, 0, 0, Note.A, 0, Note.F, 0, Note.E, Note.D4, 0, -1, Note.D4, 0, 0, Note.A, 0, 0, Note.G, 0, -1, -1*BeatFraction.Whole, 
+    Note.D, Note.E, Note.G, Note.E, Note.A, 0, -1, Note.A, 0, -1, Note.G, 0, Note.F, Note.E, 0,
     Note.D, Note.E, Note.G, Note.E, Note.G, 0, 0, Note.A, 0, Note.F, 0, Note.E, Note.D4, 0, -1, Note.D4, 0, 0, Note.A, 0, 0, Note.G, 0, -1, -1*BeatFraction.Whole
     ]
     let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, Note.D, Note.B3, Note.C, Note.A3, Note.B3, Note.G3, Note.A3,
