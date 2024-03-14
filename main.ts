@@ -39,7 +39,7 @@ basic.forever(() =>{
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, -1, Note.G, -1, Note.F, Note.E, -1, 0, 0,
      Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E]
     let nvg_melody = new Music(notes, 114)
-    let tbc = new Music(notes2, 80)
+    let tbc = new Music(notes2, 90)
     //melody.play()
     basic.pause(2000)
     tbc.play()
