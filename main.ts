@@ -38,6 +38,7 @@ basic.forever(() =>{
     let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, Note.D, Note.B3, Note.C, Note.A3, Note.B3, Note.G3, Note.A3,
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, -1, Note.G, -1, Note.F, Note.E, -1, 0, 0,
      Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E]
+1, Note.G, -1, Note.F, -1, Note.G, -1, Note.F, Note.E, -1
     let nvg_melody = new Music(notes, 114)
     let tbc = new Music(notes2, 90)
     //melody.play()
