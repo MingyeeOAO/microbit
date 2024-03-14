@@ -5,15 +5,16 @@ radio.setGroup(87)
 
 function randcolor(){
     color.r = randint(25, 50);
-    color.g = randint(25, 255);
-    color.b = randint(25, 255);
+    color.g = randint(25, 225);
+    color.b = randint(25, 225);
 }
 let cnt = 0;
+randcolor()
 basic.forever(() =>{
-    if(cnt == 0) randcolor()
-    cnt++;
-    cnt%= 50;
-    let strip = neopixel.create(DigitalPin.P2, 1, NeoPixelMode.RGB)
+    //if(cnt == 0) randcolor()
+    //cnt++;
+    //cnt%= 50;
+    //let strip = neopixel.create(DigitalPin.P2, 1, NeoPixelMode.RGB)
     
     if(input.isGesture(Gesture.Shake)){
         pins.digitalWritePin(DigitalPin.P1, 1);
@@ -31,8 +32,8 @@ basic.forever(() =>{
     }
     //else pins.digitalWritePin(DigitalPin.P1, 0)
     */
-    strip.showColor(color.hex)
-    color.r += 5;
+    //strip.showColor(color.hex)
+    //color.r += 5;
     
     //music.setTempo(90)
     let notes= [Note.D, Note.E, Note.G, Note.E, Note.B, 0, -1, Note.B, 0, -1, Note.A, 0, 0, -1, -1*BeatFraction.Whole*4,
@@ -50,14 +51,15 @@ basic.forever(() =>{
     let nvg = new Music(notes, 114)
     let tbc = new Music(notes2, 80)
     //melody.play()
-    basic.pause(10)
+    //basic.pause(10)
     input.onButtonPressed(Button.A, () => {
         tbc.play();
     })
     input.onButtonPressed(Button.B, () => {
         nvg.play()
     })
+    /*
     input.onButtonPressed(Button.AB, () => {
         pins.digitalWritePin(DigitalPin.P1, 1)
-    })
+    })*/
 })
