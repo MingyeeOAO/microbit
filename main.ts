@@ -22,44 +22,6 @@ function randcolor(){
 let cnt = 0;
 randcolor()
 basic.forever(() =>{
-    //if(cnt == 0) randcolor()
-    //cnt++;
-    //cnt%= 50;
-    //let strip = neopixel.create(DigitalPin.P2, 1, NeoPixelMode.RGB)
     
-    if(input.isGesture(Gesture.Shake)){
-        pins.digitalWritePin(DigitalPin.P1, 1);
-    }
-    pins.digitalWritePin(DigitalPin.P1, 0)
-    /*
-    radio.onReceivedNumber(function(receivedNumber: number) {
-        if(receivedNumber === 2) pins.digitalWritePin(DigitalPin.P1, 1)
-        if(receivedNumber === 1) print("Never Gonna Give You up")
-    })
-
-    if(input.buttonIsPressed(Button.B)){
-        pins.digitalWritePin(DigitalPin.P1, 0)
         
-    }
-    //else pins.digitalWritePin(DigitalPin.P1, 0)
-    */
-    //strip.showColor(color.hex)
-    //color.r += 5;
-    
-    //music.setTempo(90)
-    
-    let nvg = new Music(notes, 114)
-    let tbc = new Music(notes2, 80)
-    //melody.play()
-    //basic.pause(10)
-    input.onButtonPressed(Button.A, () => {
-        tbc.play();
-    })
-    input.onButtonPressed(Button.B, () => {
-        nvg.play()
-    })
-    /*
-    input.onButtonPressed(Button.AB, () => {
-        pins.digitalWritePin(DigitalPin.P1, 1)
-    })*/
 })
