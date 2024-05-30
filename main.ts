@@ -18,8 +18,14 @@ let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, N
 let cnt = 0;
 let nvg = new Music(notes, 114);
 let tbc = new Music(notes2, 80)
-
+let objlist = [new Object(new Vector2(0, 0), 1)]
+objlist[0].applyForce(new Vector2(0.5, 0.25))
 basic.forever(() =>{
-    
-        
+    led.stopAnimation();
+    for(let x=0; x<objlist.length; x++){
+        objlist[x].run();
+        led.plot(objlist[x].position.x, objlist[x].position.y);
+    }
 })
+OLED.init(128, 64)
+OLED.writeString("hello")

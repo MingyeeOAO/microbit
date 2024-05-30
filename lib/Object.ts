@@ -14,7 +14,7 @@ class Object{
     }
 
     applyForce(force : Vector2){
-        this.acceleration.x += (force.x/this.mass);
-        this.acceleration.y += (force.y/this.mass)
+        this.velocity.x += (force.x/this.mass);
+        this.velocity.y += (force.y/this.mass)
     }
 }
