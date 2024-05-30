@@ -14,15 +14,27 @@ let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, N
      Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E, -1, 0, 0, 0, 0,
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, -1, Note.G, -1, Note.F, Note.E, -1, 0, 0,
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E, -1]
-
+const zv = new Vector2(0, 0);
 let cnt = 0;
 let nvg = new Music(notes, 114);
 let tbc = new Music(notes2, 80);
 let mc = new Object(new Vector2(2, 4), 1);
-let objlist = [mc, new Object(new Vector2(0, 0), 1)]
+let objlist = [new Object(new Vector2(0, -1), 1)]
 //objlist[0].applyForce(new Vector2(0.5, 0.25))
 basic.forever(() =>{
     led.stopAnimation();
+    mc.run();
+    mc.velocity.x =0;
+    mc.velocity.y =0;
+    if(input.rotation(Rotation.Roll) < -15){
+        mc.velocity.x = -0.25
+    }
+    if(input.rotation(Rotation.Roll) > 15){
+        mc.velocity.x = 0.25
+    }
+    if(mc.position.x < 0) mc.position.x = 0;
+    if(mc.position.x > 4) mc.position.x = 4;
+    led.plot(mc.position.x, mc.position.y)
     for(let x=0; x<objlist.length; x++){
         objlist[x].run();
         led.plot(objlist[x].position.x, objlist[x].position.y);
@@ -34,8 +46,8 @@ basic.forever(() =>{
 
 
 input.onButtonPressed(Button.A, () =>{
-    let obj = new Object(mc.position, 1);
-    obj.applyForce(new Vector2(0, -0.5));
+    let obj = new Object(new Vector2(mc.position.x, mc.position.y), 1);
+    obj.applyForce(new Vector2(mc.velocity.x, mc.velocity.y -0.5));
 
     objlist.push(obj);
 })
