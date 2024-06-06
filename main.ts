@@ -14,10 +14,14 @@ let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, N
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, -1, Note.G, -1, Note.F, Note.E, -1, 0, 0,
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E, -1]
     */
+
+let strip = neopixel.create(DigitalPin.P2, 1, NeoPixelMode.RGB);
 const GROUP = 87;
 radio.setGroup(GROUP);
 const zv = new Vector2(0, 0);
-
+const GREEN = new Color(0, 255, 0);
+const RED = new Color(255, 0, 0);
+let tmpColor = new Color(0, 0, 0);
 let cnt = 0;
 //let nvg = new Music(notes, 114);
 //let tbc = new Music(notes2, 80);
@@ -43,9 +47,18 @@ radio.onReceivedString(function(val: string) {
     if(val == 'create'){
         objlist.push(tmp);
     }
+    if(val == 'end') {
+        run = false;
+        print('you win')
+        
+        pins.digitalWritePin(DigitalPin.P1, 0)
+    }
 })
 
 basic.forever(() =>{
+    tmpColor.r = (10-hp)/9*255;
+    tmpColor.g = (hp-1)/9*255;
+    strip.showColor(tmpColor.hex);
     pins.digitalWritePin(DigitalPin.P1, 0)
     if (run) {
     led.stopAnimation();
@@ -75,6 +88,12 @@ basic.forever(() =>{
             hp--;
         }
     }
+    if(hp <= 0) {
+        run = false;
+        radio.sendString("end")
+        print('you lose')
+        pins.digitalWritePin(DigitalPin.P1, 0)
+    }
     }
 })
 
@@ -95,3 +114,4 @@ input.onButtonPressed(Button.A, () =>{
 })
 //OLED.init(128, 64)
 //OLED.writeString("hello")
+

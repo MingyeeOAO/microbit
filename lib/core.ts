@@ -1,6 +1,6 @@
-function print(text : String | number) {
-    if(typeof(text) == "number") return basic.showNumber(text)
-    if(typeof(text) == "string") return basic.showString(text)
+function print(text : String | number, speed : number = 75) {
+    if(typeof(text) == "number") return basic.showNumber(text, speed)
+    if(typeof(text) == "string") return basic.showString(text, speed)
 }
 
 function randomInt(min : number, max: number){
