@@ -29,10 +29,11 @@ let playercnt = 0;
 function shake(duration:number) {
     pins.digitalWritePin(DigitalPin.P1, 1)
 }
-
+let hp = 10;
 let tmp = new Object(new Vector2(0, 0), 1)
 
 radio.onReceivedValue((name: string, value: number) => {
+    value=value/100;
     if(name == 'px') { tmp.position.x = 4-value}
     if(name == 'py') { tmp.position.y = -1 - value}
     if(name == 'vx') { tmp.velocity.x = -1*value}
@@ -51,11 +52,13 @@ basic.forever(() =>{
     mc.run();
     mc.velocity.x =0;
     mc.velocity.y =0;
+    if(!input.buttonIsPressed(Button.B)){
     if(input.rotation(Rotation.Roll) < -15){
         mc.velocity.x = -0.25
     }
     if(input.rotation(Rotation.Roll) > 15){
         mc.velocity.x = 0.25
+    }
     }
     if(mc.position.x < 0) mc.position.x = 0;
     if(mc.position.x > 4) mc.position.x = 4;
@@ -69,6 +72,7 @@ basic.forever(() =>{
         }
         if(Math.floor(objlist[x].position.x) == Math.floor(mc.position.x) && Math.floor(objlist[x].position.y) == Math.floor(mc.position.y)) {
             shake(10);
+            hp--;
         }
     }
     }
@@ -80,12 +84,13 @@ input.onButtonPressed(Button.A, () =>{
     obj.applyForce(new Vector2(mc.velocity.x, mc.velocity.y -0.5));
 
     objlist.push(obj);
-
-
-    radio.sendValue("px", obj.position.x);
-    radio.sendValue("py", obj.position.y);
-    radio.sendValue("vx", obj.velocity.x);
-    radio.sendValue("vy", obj.velocity.y);
+    //music.tonePlayable(Note.C, music.beat(BeatFraction.Quarter))
+    music.ringTone(Note.C)
+    music.rest(1)
+    radio.sendValue("px", obj.position.x*100);
+    radio.sendValue("py", obj.position.y*100);
+    radio.sendValue("vx", obj.velocity.x*100);
+    radio.sendValue("vy", obj.velocity.y*100);
     radio.sendString('create')
 })
 //OLED.init(128, 64)
