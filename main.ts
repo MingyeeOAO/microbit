@@ -86,6 +86,8 @@ basic.forever(() =>{
         if(Math.floor(objlist[x].position.x) == Math.floor(mc.position.x) && Math.floor(objlist[x].position.y) == Math.floor(mc.position.y)) {
             shake(10);
             hp--;
+            objlist.splice(x, 1);
+            x--;
         }
     }
     if(hp <= 0) {
@@ -114,4 +116,3 @@ input.onButtonPressed(Button.A, () =>{
 })
 //OLED.init(128, 64)
 //OLED.writeString("hello")
-
