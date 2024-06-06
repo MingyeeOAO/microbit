@@ -45,7 +45,7 @@ radio.onReceivedString(function(val: string) {
 })
 
 basic.forever(() =>{
-    //pins.digitalWritePin(DigitalPin.P1, 0)
+    pins.digitalWritePin(DigitalPin.P1, 0)
     if (run) {
     led.stopAnimation();
     mc.run();
