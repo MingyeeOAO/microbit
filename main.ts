@@ -37,8 +37,7 @@ let hp = 10;
 let tmp = new Object(new Vector2(0, 0), 1)
 
 radio.onReceivedValue((name: string, value: number) => {
-    value=value/100;
-    if(name == 'px') { tmp.position.x = 4-value}
+    if(name == 'px') { tmp.position.x = Math.max(4-value-0.1, 0)}
     if(name == 'py') { tmp.position.y = -1 - value}
     if(name == 'vx') { tmp.velocity.x = -1*value}
     if(name == 'vy') { tmp.velocity.y = -1*value}
@@ -106,10 +105,10 @@ input.onButtonPressed(Button.A, () =>{
 
     objlist.push(obj);
     //fir.play();
-    radio.sendValue("px", obj.position.x*100);
-    radio.sendValue("py", obj.position.y*100);
-    radio.sendValue("vx", obj.velocity.x*100);
-    radio.sendValue("vy", obj.velocity.y*100);
+    radio.sendValue("px", obj.position.x);
+    radio.sendValue("py", obj.position.y);
+    radio.sendValue("vx", obj.velocity.x);
+    radio.sendValue("vy", obj.velocity.y);
     radio.sendString('create')
 })
 //OLED.init(128, 64)
