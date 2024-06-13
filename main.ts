@@ -15,6 +15,7 @@ let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, N
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E, -1]
     */
 const fir = new Music([Note.B5, Note.F, Note.D, -1], 300);
+const die = new Music([Note.B3, Note.F4, -1, Note.F4, Note.E4, Note.D4, Note.C4, -1], 75)
 let strip = neopixel.create(DigitalPin.P2, 1, NeoPixelMode.RGB);
 const GROUP = 87;
 radio.setGroup(GROUP);
@@ -33,7 +34,7 @@ let playercnt = 0; let md=30;
 function shake(duration:number) {
     pins.digitalWritePin(DigitalPin.P1, 1)
 }
-let hp = 10; let time = 0;
+let hp = 0; let time = 0;
 let tmp = new Object(new Vector2(0, 0), 1)
 let single = false;
 radio.onReceivedValue((name: string, value: number) => {
@@ -44,7 +45,7 @@ radio.onReceivedValue((name: string, value: number) => {
 })
 radio.onReceivedString(function(val: string) {
     if(val == 'create'){
-        objlist.push(tmp);
+        if(!single) objlist.push(tmp);
     }
     if(val == 'end') {
         run = false;
@@ -91,7 +92,9 @@ basic.forever(() =>{
     }
     if(hp <= 0) {
         run = false;
-        radio.sendString("end")
+        if (!single) radio.sendString("end")
+        single = false;
+        die.play();
         print('you lose')
         pins.digitalWritePin(DigitalPin.P1, 0)
     }
@@ -101,8 +104,8 @@ basic.forever(() =>{
             let obj = new Object(new Vector2(randint(0, 4), -1), 1);
             obj.applyForce(new Vector2(randint(-2, 2)/10, 0.5));
             objlist.push(obj);
-            if(cnt >= 10){
-                md = Math.max(10, md-1);
+            if(cnt >= 5){
+                md = Math.max(3, md-1);
                 cnt =0;
             }
         }
