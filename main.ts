@@ -130,7 +130,7 @@ input.onButtonPressed(Button.A, () =>{
     }
 })
 input.onButtonPressed(Button.AB, function() {
-    if(!run) {
+    if(!run && !single) {
         run =true;
         //single = true;
     }
@@ -148,8 +148,6 @@ input.onGesture(Gesture.ScreenDown, function() {
         basic.pause(1000)
         single = true;
     }
-
-    
 })
 
 //OLED.init(128, 64)
