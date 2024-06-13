@@ -14,7 +14,7 @@ let notes2 = [Note.F, 0, Note.G, Note.FSharp, Note.E, Note.D, Note.C, Note.B3, N
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, -1, Note.G, -1, Note.F, Note.E, -1, 0, 0,
     Note.E, -1, Note.E, Note.F, -1, Note.G, -1, Note.F, Note.E, -1]
     */
-
+const fir = new Music([Note.B5, Note.F, Note.D, -1], 300);
 let strip = neopixel.create(DigitalPin.P2, 1, NeoPixelMode.RGB);
 const GROUP = 87;
 radio.setGroup(GROUP);
@@ -75,15 +75,15 @@ basic.forever(() =>{
     }
     if(mc.position.x < 0) mc.position.x = 0;
     if(mc.position.x > 4) mc.position.x = 4;
-    led.plot(mc.position.x, mc.position.y)
+    led.plot(Math.round(mc.position.x), Math.round(mc.position.y))
     for(let x=0; x<objlist.length; x++){
         objlist[x].run();
-        led.plot(objlist[x].position.x, objlist[x].position.y);
+        led.plot(Math.round(objlist[x].position.x), Math.round(objlist[x].position.y));
         if(Math.abs(objlist[x].position.x) > 20 || Math.abs(objlist[x].position.y) > 20){
             objlist.splice(x, 1);
             x--;
         }
-        if(Math.floor(objlist[x].position.x) == Math.floor(mc.position.x) && Math.floor(objlist[x].position.y) == Math.floor(mc.position.y)) {
+        if(Math.round(objlist[x].position.x) == Math.round(mc.position.x) && Math.floor(objlist[x].position.y) == Math.floor(mc.position.y)) {
             shake(10);
             hp--;
             objlist.splice(x, 1);
@@ -105,9 +105,7 @@ input.onButtonPressed(Button.A, () =>{
     obj.applyForce(new Vector2(mc.velocity.x, mc.velocity.y -0.5));
 
     objlist.push(obj);
-    //music.tonePlayable(Note.C, music.beat(BeatFraction.Quarter))
-    music.ringTone(Note.C)
-    music.rest(1)
+    //fir.play();
     radio.sendValue("px", obj.position.x*100);
     radio.sendValue("py", obj.position.y*100);
     radio.sendValue("vx", obj.velocity.x*100);
