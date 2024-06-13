@@ -28,14 +28,14 @@ let cnt = 0;
 let mc = new Object(new Vector2(2, 4), 1);
 let objlist = [new Object(new Vector2(0, -1), 1)]
 //objlist[0].applyForce(new Vector2(0.5, 0.25))
-let run = true;
-let playercnt = 0;
+let run = false;
+let playercnt = 0; let md=30;
 function shake(duration:number) {
     pins.digitalWritePin(DigitalPin.P1, 1)
 }
-let hp = 10;
+let hp = 10; let time = 0;
 let tmp = new Object(new Vector2(0, 0), 1)
-
+let single = false;
 radio.onReceivedValue((name: string, value: number) => {
     if(name == 'px') { tmp.position.x = Math.max(4-value-0.1, 0)}
     if(name == 'py') { tmp.position.y = -1 - value}
@@ -59,7 +59,7 @@ basic.forever(() =>{
     tmpColor.g = (hp-1)/9*255;
     strip.showColor(tmpColor.hex);
     pins.digitalWritePin(DigitalPin.P1, 0)
-    if (run) {
+    if (run || single) {
     led.stopAnimation();
     mc.run();
     mc.velocity.x =0;
@@ -95,11 +95,25 @@ basic.forever(() =>{
         print('you lose')
         pins.digitalWritePin(DigitalPin.P1, 0)
     }
+    if (single) {
+        if (time ==0){
+            cnt++;
+            let obj = new Object(new Vector2(randint(0, 4), -1), 1);
+            obj.applyForce(new Vector2(randint(-2, 2)/10, 0.5));
+            objlist.push(obj);
+            if(cnt >= 10){
+                md = Math.max(10, md-1);
+                cnt =0;
+            }
+        }
+    }
+    time = (time +1)%md;
     }
 })
 
 
 input.onButtonPressed(Button.A, () =>{
+    if(run) {
     let obj = new Object(new Vector2(mc.position.x, mc.position.y), 1);
     obj.applyForce(new Vector2(mc.velocity.x, mc.velocity.y -0.5));
 
@@ -110,6 +124,29 @@ input.onButtonPressed(Button.A, () =>{
     radio.sendValue("vx", obj.velocity.x);
     radio.sendValue("vy", obj.velocity.y);
     radio.sendString('create')
+    }
 })
+input.onButtonPressed(Button.AB, function() {
+    if(!run) {
+        run =true;
+        //single = true;
+    }
+})
+input.onGesture(Gesture.ScreenDown, function() {
+    if(!single){
+        hp=10;
+        md=30;
+        objlist.splice(0, objlist.length-1)
+        print(3);
+        basic.pause(1000)
+        print(2);
+        basic.pause(1000)
+        print(1);
+        basic.pause(1000)
+    }
+    single = !single;
+    
+})
+
 //OLED.init(128, 64)
 //OLED.writeString("hello")
