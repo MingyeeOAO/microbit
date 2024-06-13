@@ -34,7 +34,7 @@ let playercnt = 0; let md=30;
 function shake(duration:number) {
     pins.digitalWritePin(DigitalPin.P1, 1)
 }
-let hp = 0; let time = 0;
+let hp = 10; let time = 0;
 let tmp = new Object(new Vector2(0, 0), 1)
 let single = false;
 radio.onReceivedValue((name: string, value: number) => {
@@ -146,8 +146,9 @@ input.onGesture(Gesture.ScreenDown, function() {
         basic.pause(1000)
         print(1);
         basic.pause(1000)
+        single = true;
     }
-    single = !single;
+
     
 })
 
