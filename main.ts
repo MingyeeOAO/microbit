@@ -123,7 +123,7 @@ input.onButtonPressed(Button.A, () =>{
     obj.applyForce(new Vector2(mc.velocity.x, mc.velocity.y -0.5));
 
     objlist.push(obj);
-    //fir.play();
+    fir.play();
     radio.sendValue("px", obj.position.x);
     radio.sendValue("py", obj.position.y);
     radio.sendValue("vx", obj.velocity.x);
