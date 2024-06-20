@@ -23,11 +23,13 @@ const zv = new Vector2(0, 0);
 const GREEN = new Color(0, 255, 0);
 const RED = new Color(255, 0, 0);
 let tmpColor = new Color(0, 0, 0);
+let cntdownmsc = new Music([Note.FSharp4, -1], 60)
 let cnt = 0;
 //let nvg = new Music(notes, 114);
 //let tbc = new Music(notes2, 80);
 let mc = new Object(new Vector2(2, 4), 1);
 let objlist = [new Object(new Vector2(0, -1), 1)]
+let ring = new Music([Note.A5, -1], 30)
 //objlist[0].applyForce(new Vector2(0.5, 0.25))
 let run = false;
 let playercnt = 0; let md=30;
@@ -136,16 +138,21 @@ input.onButtonPressed(Button.AB, function() {
     }
 })
 input.onGesture(Gesture.ScreenDown, function() {
-    if(!single){
+    if(!single && !run){
         hp=10;
         md=30;
         objlist.splice(0, objlist.length-1)
+        cntdownmsc.play()
         print(3);
-        basic.pause(1000)
+        basic.pause(500)
+        cntdownmsc.play()
         print(2);
-        basic.pause(1000)
+        basic.pause(500)
+        cntdownmsc.play()
         print(1);
-        basic.pause(1000)
+        basic.pause(500)
+        ring.play()
+
         single = true;
     }
 })
